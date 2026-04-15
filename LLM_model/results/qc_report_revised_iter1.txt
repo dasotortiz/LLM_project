@@ -1,0 +1,24 @@
+Summary of Reliability:
+The FACT_SHEET provides the following numbers related to cell typing: n_cells: 23466, unanimous_3of3: 13012 (55.45%), majority_2of3: 8485 (36.16%), disagreement_1of3: 1969 (8.39%).
+
+Exclusion Policy:
+The exclusion policy is moderate. We will keep cells with Vote_support in [2,3], but flag Vote_support=2 as medium-confidence.
+
+Confidence Tiers for Downstream Analysis:
+The confidence tiers for downstream analysis are as follows:
+- High confidence: Vote_support=3
+- Medium confidence: Vote_support=2 (flagged as medium-confidence)
+- Low confidence: Vote_support=1
+
+Top Risks and Likely Causes:
+The top risks and likely causes based on the FACT_SHEET are as follows:
+
+1. Method disagreement is concentrated in RandomForest versus the other methods.
+2. Strong Plasma Cell conflict pattern in RandomForest suggests classifier bias or calibration mismatch.
+
+Prioritized Next Steps:
+Based on the top risks and likely causes, the prioritized next steps are as follows:
+
+1. Investigate the method disagreement between RandomForest and the other methods.
+2. Evaluate the performance of RandomForest on Plasma Cell samples and investigate the cause of the strong Plasma Cell conflict pattern.
+3. Consider implementing alternative methods or improving the calibration of the RandomForest classifier to mitigate the risks identified.

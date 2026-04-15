@@ -1,0 +1,40 @@
+FACT SHEET USED
+---------------
+FACT_SHEET_DO_NOT_CHANGE_NUMBERS
+- n_cells: 23466
+- unanimous_3of3: 4879 (20.79%)
+- majority_2of3: 13258 (56.5%)
+- disagreement_1of3: 5329 (22.71%)
+- pairwise_celltypist_vs_randomforest: 27.49%
+- pairwise_celltypist_vs_seurat: 63.41%
+- pairwise_randomforest_vs_seurat: 27.98%
+- randomforest_disagrees_with_both_count: 15329
+- randomforest_plasma_cell_conflict_count: 13879
+
+CREWAI LLM REPORT
+-----------------
+Summary of Reliability:
+The quality control analysis was performed based on the numbers provided in the FACT_SHEET. The total number of cells was 23466. Among these cells, 4879 (20.79%) cells showed unanimous agreement in their cell type classification using three different methods. Majority agreement (2of3) was observed in 13258 (56.5%) cells. Disagreement (1of3) was observed in 5329 (22.71%) cells.
+
+Exclusion Policy:
+The exclusion policy for this analysis was not explicitly stated in the FACT_SHEET. However, based on the provided numbers, it appears that cells with disagreement (1of3) in their cell type classification using three different methods were excluded from further analysis.
+
+Confidence Tiers for Downstream Analyses:
+The FACT_SHEET does not provide information on the confidence tiers for downstream analyses.
+
+Top Risks and Likely Causes:
+Based on the provided FACT_SHEET, the top risks and likely causes for errors in cell type classification using three different methods are:
+
+1. Disagreement (1of3) in cell type classification using three different methods. This disagreement may be due to errors in the data or in the algorithms used for cell type classification.
+
+2. Pairwise conflicts between cell typists and between different algorithms used for cell type classification. These conflicts may be due to differences in the data or in the algorithms used for cell type classification.
+
+3. Random forest disagrees with both Seurat and cell typists. This disagreement may be due to errors in the data or in the algorithms used for cell type classification.
+
+Prioritized Next Steps:
+Based on the top risks and likely causes identified in the cell type classification analysis, the prioritized next steps for addressing these risks and improving the accuracy of cell type classification are:
+
+1. Improve data quality by implementing rigorous data cleaning and preprocessing procedures.
+2. Develop and implement robust and accurate cell type classification algorithms that can handle complex data and minimize false positives and false negatives.
+3. Implement rigorous quality control and validation procedures to ensure that cell type classification results are accurate, reliable, and reproducible.
+4. Continuously monitor and evaluate cell type classification performance and implement corrective actions as needed to maintain high levels of accuracy and reliability.

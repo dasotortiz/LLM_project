@@ -1,0 +1,33 @@
+Consensus QC Report (file-based)
+================================
+
+Cells analyzed: 23466
+Unanimous (3/3): 13012 (55.45%)
+Majority (2/3): 8485 (36.16%)
+Disagreement (1/3): 1969 (8.39%)
+
+Pairwise agreement:
+- CellTypist_vs_RandomForest: 59.93%
+- CellTypist_vs_Seurat: 63.41%
+- RandomForest_vs_Seurat: 79.17%
+
+Top consensus labels:
+- pre-PC: 13271
+- HSC: 3721
+- ProB: 1981
+- MPP: 877
+- PreB: 849
+- Plasma Cell: 764
+- CLP: 590
+- ERP: 238
+- MDP: 237
+- GMP: 220
+
+Potential issues:
+- RandomForest Plasma Cell bias in conflicts: 2104 cells.
+
+Exclusion / QC policy suggestions:
+- Strict filter: exclude cells with Vote_support=1 (all three methods disagree).
+- Moderate filter: keep Vote_support>=2, but mark Vote_support=2 as medium confidence.
+- High-confidence set for downstream DE/pseudotime: only Vote_support=3.
+- Audit subset: all cells where RandomForest disagrees with both CellTypist and Seurat.

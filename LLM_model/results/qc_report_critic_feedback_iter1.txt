@@ -1,0 +1,10 @@
+A) FAILED CHECKS:
+
+1. Method disagreement is concentrated in RandomForest versus the other methods.
+2. Strong Plasma Cell conflict pattern in RandomForest suggests classifier bias or calibration mismatch.
+
+B) FIX INSTRUCTIONS:
+
+1. Investigate the method disagreement between RandomForest and the other methods.
+2. Evaluate the performance of RandomForest on Plasma Cell samples and investigate the cause of the strong Plasma Cell conflict pattern.
+3. Consider implementing alternative methods or improving the calibration of the RandomForest classifier to mitigate the risks identified.

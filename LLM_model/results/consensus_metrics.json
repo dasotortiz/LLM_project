@@ -1,0 +1,9 @@
+{
+  "n_cells": 23466,
+  "unanimous_3of3": 13012,
+  "majority_2of3": 8485,
+  "disagreement_1of3": 1969,
+  "pairwise_celltypist_vs_randomforest": 59.92925935395892,
+  "pairwise_celltypist_vs_seurat": 63.40663087019518,
+  "pairwise_randomforest_vs_seurat": 79.17412426489389
+}

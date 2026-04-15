@@ -1,0 +1,62 @@
+{
+  "n_cells": 23466,
+  "files": {
+    "ensemble_benchmark_ready": "/ibex/user/sotoorda/masterh1/LLM_project/benchmarking/ensemble_benchmark_ready.csv",
+    "scgpt_benchmark_ready": "/ibex/user/sotoorda/masterh1/LLM_project/benchmarking/scgpt_benchmark_ready.csv",
+    "aligned_model_predictions": "/ibex/user/sotoorda/masterh1/LLM_project/benchmarking/aligned_model_predictions.csv",
+    "ensemble_vs_scgpt_merged": "/ibex/user/sotoorda/masterh1/LLM_project/benchmarking/ensemble_vs_scgpt_merged.csv",
+    "model_vs_scgpt_metrics": "/ibex/user/sotoorda/masterh1/LLM_project/benchmarking/model_vs_scgpt_metrics.csv"
+  },
+  "metrics": [
+    {
+      "model": "CellTypist",
+      "accuracy": 0.19943748401943237,
+      "balanced_accuracy": 0.2915837890942385,
+      "macro_precision": 0.19117082704227778,
+      "macro_recall": 0.11214761119009173,
+      "macro_f1": 0.12617044135911729,
+      "n_cells": 23466,
+      "agreement_with_scGPT_pct": 63.12963436461263
+    },
+    {
+      "model": "RandomForest",
+      "accuracy": 0.18349953123668286,
+      "balanced_accuracy": 0.2505185736164899,
+      "macro_precision": 0.27348938074626244,
+      "macro_recall": 0.10020742944659596,
+      "macro_f1": 0.11438390814995124,
+      "n_cells": 23466,
+      "agreement_with_scGPT_pct": 78.41984147276911
+    },
+    {
+      "model": "Seurat",
+      "accuracy": 0.22662575641353447,
+      "balanced_accuracy": 0.4031326932664167,
+      "macro_precision": 0.3303244244031704,
+      "macro_recall": 0.2121751017191667,
+      "macro_f1": 0.2333000941979599,
+      "n_cells": 23466,
+      "agreement_with_scGPT_pct": 88.6516662405182
+    },
+    {
+      "model": "Ensemble",
+      "accuracy": 0.208983209750277,
+      "balanced_accuracy": 0.3626697507126675,
+      "macro_precision": 0.22816884941541316,
+      "macro_recall": 0.13948836565871828,
+      "macro_f1": 0.16148946916810608,
+      "n_cells": 23466,
+      "agreement_with_scGPT_pct": 86.16295917497656
+    },
+    {
+      "model": "scGPT",
+      "accuracy": 0.20646893377652775,
+      "balanced_accuracy": 0.3352876433854139,
+      "macro_precision": 0.28019873047246635,
+      "macro_recall": 0.14577723625452776,
+      "macro_f1": 0.15667635134627259,
+      "n_cells": 23466,
+      "agreement_with_scGPT_pct": 100.0
+    }
+  ]
+}

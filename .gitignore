@@ -1,0 +1,18 @@
+# R
+.Rhistory
+.RData
+.lintr.R
+
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# folders in repo
+CellTypist/Objects/
+LLM_model/.xdg_data/
+Random_forest/Objects/
+scGPT/scGPT_human/
