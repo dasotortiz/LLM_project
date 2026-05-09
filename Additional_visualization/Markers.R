@@ -3,6 +3,7 @@ library(viridis)
 library(scCustomize)
 library(ggplot2)
 library(patchwork)
+library(dplyr)
 
 # Define the markers for each cell population
 markers <- c(
@@ -61,3 +62,40 @@ DotPlot_scCustom(seurat_object = hca_subset, features = markers, x_lab_rotate = 
   ) +
   ggtitle("HCA")
 dev.off()
+
+# populations barplots
+
+hca_ref$ref.cell.type <- hca_ref$CellType
+hca_ref$annotation_2 <- as.character(hca_ref$annotation_2)
+hca_ref$ref.cell.type <- ifelse(!is.na(hca_ref$annotation_2), hca_ref$annotation_2, hca_ref$ref.cell.type)
+
+xpand_counts <- FetchData(xpand, vars = "annotation_2") %>%
+  group_by(annotation_2) %>%
+  summarise(Freq = n()) %>%
+  mutate(dataset = "Xpand", cell_type = annotation_2) %>%
+  select(-annotation_2
+  
+  )
+hca_counts <- FetchData(hca_ref, vars = "ref.cell.type") %>%
+  group_by(ref.cell.type) %>%
+  summarise(Freq = n()) %>%
+  mutate(dataset = "HCA", cell_type = ref.cell.type) %>%
+  select(-ref.cell.type)
+
+cell_counts <- rbind(xpand_counts, hca_counts)
+cell_type_levels <- c(celltype_order, setdiff(unique(cell_counts$cell_type), celltype_order))
+cell_counts$cell_type <- factor(cell_counts$cell_type, levels = cell_type_levels)
+
+pdf("/ibex/user/sotoorda/LLM_project/Additional_visualization/celltype_counts.pdf", width = 9, height = 5)
+ggplot(cell_counts, aes(x = cell_type, y = Freq, fill = dataset)) +
+  geom_col(position = position_dodge(width = 0.8), width = 0.7) +
+  labs(x = "Cell type", y = "Number of cells", fill = "Dataset") +
+  scale_fill_manual(values = c("HCA" = "steelblue", "Xpand" = "red")) +
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  ggtitle("Cell counts by dataset")
+dev.off()
+

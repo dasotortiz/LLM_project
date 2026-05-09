@@ -1,4 +1,5 @@
 library(Seurat)
+library(ggrepel)
 
 seurat <- readRDS("/ibex/user/sotoorda/masterh1/public_data_analysis/3_datasets_analysis/objects/individual_datasets/final_version/xpand_final_annot.rds")
 
@@ -56,11 +57,57 @@ seurat_int$pred_rf <- cm_rf$Predicted_label[match(rownames(seurat_int@meta.data)
 seurat_int$pred_seurat <- cm_seurat$Predicted_label[match(rownames(seurat_int@meta.data), cm_seurat$Cell_id)]
 seurat_int$pred_scgpt <- cm_scgpt$Predicted_label[match(rownames(seurat_int@meta.data), cm_scgpt$Cell_id)]
 
+celltype_colors <- c(
+  "HSC" = "steelblue",
+  "Stromal" = "black",
+
+  # Stem/progenitors
+  "MPP" = "#9AC0CD",
+  "CLP" = "#98FB98",
+
+  # T/NK lineage (greens)
+  "NK cells" = "#88EB88",
+  "pre-T" = "#79DC79",
+  "Naive T-cell" = "#6ACD6A",
+  "CD8 T-cell" = "#5BBE5B",
+
+  # B lineage (greens, darker)
+  "ProB" = "#4CAF4C",
+  "PreB" = "#3CA03C",
+  "Follicular B cell" = "#1E821E",
+  "pre-PC" = "#0F730F",
+  "Plasma Cell" = "#006400",
+
+  # Myeloid progenitors
+  "GMP" = "#F5CD94",
+
+  # Erythroid / MEP / MKP (purples)
+  "MEP" = "#FFE1FF",
+  "MKP" = "#E2BFEB",
+  "ERP" = "#AA7DC4",
+  "Early-Erythroblast" = "#8D5CB1",
+  "Erythroblast" = "#713B9E",
+  "Platelet" = "#551A8B",
+
+  # Eo/B/Mast & granulocytic (oranges)
+  "Eo/B/Mast" = "#FFE7BA",
+  "Granulocytic-UNK" = "#EBB36F",
+  "Immature-Neutrophil" = "#E1994A",
+  "Neutrophil" = "#D77F25",
+  "Eosinophil" = "#CD6600",
+
+  # MDP / dendritic / monocyte (blues)
+  "MDP" = "#5C73AE",
+  "Pre-Dendritic" = "#3D4C9E",
+  "Dendritic Cell" = "#1E268F",
+  "Monocyte" = "#000080"
+)
+unique(seurat_int$annotation_2)
 # UMAPS for integrated data
 pdf("/ibex/user/sotoorda/LLM_project/Additional_visualization/xpand_umap.pdf", width = 15, height = 10)
-DimPlot(seurat_int, group.by = "annotation_2", reduction = "umap_integrated_cca", label = TRUE)
-DimPlot(seurat_int, group.by = "pred_celltypist", reduction = "umap_integrated_cca", label = TRUE)
-DimPlot(seurat_int, group.by = "pred_rf", reduction = "umap_integrated_cca", label = TRUE)
-DimPlot(seurat_int, group.by = "pred_seurat", reduction = "umap_integrated_cca", label = TRUE)
-DimPlot(seurat_int, group.by = "pred_scgpt", reduction = "umap_integrated_cca", label = TRUE)
+DimPlot(seurat_int, group.by = "annotation_2", reduction = "umap_integrated_harmony", label = TRUE, cols = celltype_colors, pt.size = 0.4, label.size = 5)
+DimPlot(seurat_int, group.by = "pred_celltypist", reduction = "umap_integrated_harmony", label = TRUE, cols = celltype_colors, pt.size = 0.4, label.size = 5)
+DimPlot(seurat_int, group.by = "pred_rf", reduction = "umap_integrated_harmony", label = TRUE, cols = celltype_colors, pt.size = 0.4, label.size = 5)
+DimPlot(seurat_int, group.by = "pred_seurat", reduction = "umap_integrated_harmony", label = TRUE, cols = celltype_colors, pt.size = 0.4, label.size = 5)
+DimPlot(seurat_int, group.by = "pred_scgpt", reduction = "umap_integrated_harmony", label = TRUE, cols = celltype_colors, pt.size = 0.4, label.size = 5)
 dev.off()
